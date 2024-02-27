@@ -10,9 +10,9 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar fixed-top navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ExpressVoitures</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Express Voitures</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -20,7 +20,8 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                           @* liste Car *@   
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Nos Voitures</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
@@ -31,15 +32,16 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - ExpressVoitures - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="border-top footer">
+        <div class="container text-center">
+            2024 Copyright &copy;  Express Voitures - Tous droits réservés .  
+            <a asp-area="" asp-controller="Home" asp-action="Privacy" class="text-decoration-none text-danger">Mentions Légales</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
