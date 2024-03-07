@@ -1,0 +1,27 @@
+﻿@model ExpressVoitures.Models.VoitureImage
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Est-vous sur de supprimer cette image</h3>
+<div>
+    <h4>Image</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nom)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete" asp-route-idVoiture="@ViewData["idVoiture"]">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-outline-danger" /> |
+        <a class="btn btn-outline-info" asp-action="Edit" asp-controller="Annonces" asp-route-id="@Model.IdAnnonce" asp-route-idVoiture="@ViewData["idVoiture"]">Retour à l'édition de l'annonce</a>
+    </form>
+</div>

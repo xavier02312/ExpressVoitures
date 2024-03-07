@@ -1,0 +1,51 @@
+﻿@model ExpressVoitures.ViewModels.ReparationsVM
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>@Model.IndexTitle</h1>
+
+<p>
+    <a asp-action="Create" asp-route-idVoiture=@Model.IdVoiture>Creation d'une nouvelle réparation</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Type d'intervention
+            </th>
+            <th>
+                Coût d'intervention
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Reparations) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reparation.TypeDeReparation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reparation.CoutsReparation)
+                </td>
+                <td>
+                        <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@item.Reparation.Id" asp-route-idVoiture=@Model.IdVoiture>Edit</a> |
+                        <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Reparation.Id" asp-route-idVoiture=@Model.IdVoiture>Details</a> |
+                        <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Reparation.Id" asp-route-idVoiture="@item.Reparation.IdVoiture">Delete</a>
+                </td>
+            </tr>
+        }
+        <tr></tr>
+        <tr>
+            <th>
+                Le total des réparations de cette voiture est de @Model.CalculTotalReparation() €
+            </th>
+        </tr>
+
+    </tbody>
+</table>
+<div>
+    <a class="btn btn-outline-info" asp-controller="Voitures" asp-action="Index" )>retour à la liste des voitures</a>
+</div>

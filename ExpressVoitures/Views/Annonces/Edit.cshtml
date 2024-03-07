@@ -1,0 +1,97 @@
+﻿@model ExpressVoitures.Models.Annonce
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<head>
+    <style>
+        .img-thumbnail {
+            width: 200px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<h1>Edit</h1>
+
+<h4>Annonce</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" name="idVoiture" value="@ViewData["idVoiture"]" />
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="TitreAnnonce" class="control-label"></label>
+                <input asp-for="TitreAnnonce" class="form-control" />
+                <span asp-validation-for="TitreAnnonce" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DescriptionAnnonce" class="control-label"></label>
+                <input asp-for="DescriptionAnnonce" class="form-control" />
+                <span asp-validation-for="DescriptionAnnonce" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VoitureImages" class="control-label"></label>
+                <input type="file" asp-for="VoitureImages" class="form-control" />
+                <span asp-validation-for="VoitureImages" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Ajout photo ou modification annonce" class="btn btn-outline-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<hr />
+<h4>Liste des photos de l'annonce</h4>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nom de la photo
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VoitureImages.FirstOrDefault().Fichier)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.VoitureImages == null || !Model.VoitureImages.Any())
+        {
+            <div>Aucune photo n'a été trouvée.</div>
+        }
+        else
+        {
+            @foreach (var item in Model.VoitureImages)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nom)
+                    </td>
+                    <td>
+                        <img src="@Url.Content("~/Voitures/images/" + System.IO.Path.GetFileName(item.LienPhoto))" class="img-thumbnail" />
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-warning" asp-action="Edit" asp-controller="VoitureImages" asp-route-id="@item.Id" asp-route-idAnnonce="@Model.Id" asp-route-idVoiture="@Model.IdVoiture">Edit</a> |
+                        <a class="btn btn-outline-danger" asp-action="Delete" asp-controller="VoitureImages" asp-route-id="@item.Id" asp-route-idAnnonce="@Model.Id" asp-route-idVoiture="@Model.IdVoiture">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<div>
+    <a class="btn btn-outline-info" asp-action="Index" asp-route-idVoiture="@Model?.IdVoiture">Retour à l'annonce</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

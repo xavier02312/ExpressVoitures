@@ -1,6 +1,7 @@
 ﻿using ExpressVoitures.Data;
 using ExpressVoitures.Models.Service;
 using ExpressVoitures.Models;
+using static ExpressVoitures.Models.Voiture;
 
 namespace ExpressVoitures.ViewModels
 {

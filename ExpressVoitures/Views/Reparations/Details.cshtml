@@ -1,0 +1,30 @@
+﻿@model ExpressVoitures.Models.Reparation
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Reparation</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TypeDeReparation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TypeDeReparation)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CoutsReparation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CoutsReparation)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@Model?.Id" asp-route-idVoiture=@Model.IdVoiture>Edit</a> |
+    <a class="btn btn-outline-info" asp-action="Index" asp-route-idVoiture=@Model.IdVoiture>Back to List</a>
+</div>

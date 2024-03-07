@@ -23,7 +23,7 @@ namespace ExpressVoitures.ViewModels
             if (Reparations != null && Reparations.Any())
             {
                 var DateOnlyAchatVoiture = DateOnly.FromDateTime(Reparations.FirstOrDefault().Reparation.Voiture.DateAchat);
-
+                /*Erreur*/
                 IndexTitle = "Liste des réparations du véhicule de marque " + Reparations.FirstOrDefault().Reparation.Voiture.Marque +
                     " de modèle " + Reparations.FirstOrDefault().Reparation.Voiture.Modele
                     + " acheté le " + DateOnlyAchatVoiture;
