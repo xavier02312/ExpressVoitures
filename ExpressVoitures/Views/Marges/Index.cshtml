@@ -1,0 +1,31 @@
+﻿@model ExpressVoitures.Models.Marge
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Marge</h2>
+
+<p>La marge actuelle est : @Model.Value</p>
+
+@using (Html.BeginForm("Index", "Marges", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label for="value">Nouvelle marge :</label>
+        <input type="number" name="value" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-outline-success">Modifier</button>
+}
+
+<div>
+    <a class="btn btn-outline-info" asp-controller="Voitures" asp-action="Index">retour à la liste des voitures</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

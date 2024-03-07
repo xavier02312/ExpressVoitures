@@ -1,0 +1,66 @@
+﻿@model ExpressVoitures.Models.Annonce
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<head>
+    <style>
+        .img-thumbnail {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<h1>Annonce de la voiture :</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TitreAnnonce)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescriptionAnnonce)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VoitureImages)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.TitreAnnonce)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.DescriptionAnnonce)
+            </td>
+            @if (Model.VoitureImages == null || !Model.VoitureImages.Any())
+            {
+                <td>Aucune photo n'a été trouvée</td>
+            }
+            else
+            {
+                @foreach (var item in Model.VoitureImages)
+                {
+                    <td>
+                        <img src="@Url.Content("~/Voitures/images/" + System.IO.Path.GetFileName(item.LienPhoto))" class="img-thumbnail" />
+                    </td>
+                }
+            }
+            <td>
+                <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@Model.Id" asp-route-idVoiture="@Model.IdVoiture">Edit</a> |
+                <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@Model.Id" asp-route-idVoiture="@Model.IdVoiture">Details</a>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+<div>
+    <a asp-controller="Voitures" asp-action="Index">retour à la liste des voitures</a>
+</div>

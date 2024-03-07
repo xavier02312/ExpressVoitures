@@ -1,0 +1,24 @@
+﻿@model ExpressVoitures.Models.VoitureImage
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>VoitureImage</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LienPhoto)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LienPhoto)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@Model?.Id" asp-route-idAnnonce="@Model.IdAnnonce" asp-route-idVoiture="@ViewData["idVoiture"]">Edit</a> |
+    <a class="btn btn-outline-info" asp-action="Edit" asp-controller="Annonces" asp-route-id="@Model.IdAnnonce" asp-route-idVoiture="@ViewData["idVoiture"]">Retour à l'édition de l'annonce</a>
+</div>

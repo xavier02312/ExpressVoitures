@@ -1,0 +1,33 @@
+﻿@model ExpressVoitures.Models.Annonce
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Est-vous sur de supprimer cette Annonce ?</h3>
+<div>
+    <h4>Annonce</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TitreAnnonce)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TitreAnnonce)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DescriptionAnnonce)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DescriptionAnnonce)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-outline-danger" /> |
+        <a class="btn btn-outline-info" asp-action="Index">Back to List</a>
+    </form>
+</div>

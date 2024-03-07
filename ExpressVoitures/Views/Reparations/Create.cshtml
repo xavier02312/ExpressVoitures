@@ -1,0 +1,39 @@
+﻿@model ExpressVoitures.Models.Reparation
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Reparation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <input type="hidden" name="idVoiture" value="@ViewData["idVoiture"]" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TypeDeReparation" class="control-label"></label>
+                <input asp-for="TypeDeReparation" class="form-control" />
+                <span asp-validation-for="TypeDeReparation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoutsReparation" class="control-label"></label>
+                <input asp-for="CoutsReparation" class="form-control" />
+                <span asp-validation-for="CoutsReparation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-outline-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-outline-info" asp-action="Index" asp-route-idVoiture="@ViewData["idVoiture"]">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
