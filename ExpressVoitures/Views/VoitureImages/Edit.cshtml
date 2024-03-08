@@ -21,14 +21,14 @@
                 <input asp-for="Nom" class="form-control" />
                 <span asp-validation-for="Nom" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mt-1">
                 <input type="submit" value="Save" class="btn btn-outline-success" asp-route-id="@ViewData["idAnnonce"]" asp-route-idVoiture="@ViewData["idVoiture"]" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
+<div class="mt-1">
     <a class="btn btn-outline-info" asp-action="Edit" asp-controller="Annonces" asp-route-id="@Model.IdAnnonce" asp-route-idVoiture="@ViewData["idVoiture"]">Retour à l'édition de l'annonce</a>
 </div>
 

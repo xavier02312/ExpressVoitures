@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using ExpressVoitures.Data;
 using ExpressVoitures.Models;
 using ExpressVoitures.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ExpressVoitures.Controllers
 {
+    [Authorize]
     public class ReparationsController : Controller
     {
         private readonly ApplicationDbContext _context;

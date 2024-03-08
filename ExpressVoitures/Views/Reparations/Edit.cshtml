@@ -25,14 +25,14 @@
                 <input asp-for="CoutsReparation" class="form-control" />
                 <span asp-validation-for="CoutsReparation" class="text-danger"></span>
             </div>
-            <div class="form-group" asp-route-idVoiture=@Model.IdVoiture>
+            <div class="form-group mt-1" asp-route-idVoiture=@Model.IdVoiture>
                 <input type="submit" value="Save" class="btn btn-outline-success" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
+<div class="mt-1">
     <a class="btn btn-outline-info" asp-action="Index" asp-route-idVoiture=@Model.IdVoiture>Back to List</a>
 </div>
 

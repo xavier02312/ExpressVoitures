@@ -1,0 +1,102 @@
+﻿@model IEnumerable<ExpressVoitures.ViewModels.VoitureVM>
+
+@{
+    ViewData["Title"] = "NosVoitures";
+}
+
+
+<head>
+    <style>
+        /* image dans la div */
+        .img-thumbnail {
+            max-width: 223px;
+            max-height: 130px;
+            object-fit: cover;
+        }
+        /* image fond  */
+        .img-photo7 {
+            object-fit: cover;
+        }
+        .item {
+            background-color: #FDFDFD;
+            border-style: solid;
+            border-color: #000000;
+        }
+        /* fond Vendu  */
+        .statue {
+            background-color: #FF0000;
+            text-align: center;
+            padding: 15px;
+            clip-path: polygon(0% 0%, 96% 0%, 96% 100%, 97% 101%, 35% 38%);
+        }
+        /* fond Vendu  */
+        .statue-text {
+            transform: rotate(25deg);
+        }
+        body {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var items = document.getElementsByClassName("item");
+            var maxHeight = 0;
+            for (var i = 0; i < items.length; i++) {
+                maxHeight = Math.max(maxHeight, items[i].clientHeight);
+            }
+            for (var i = 0; i < items.length; i++) {
+                items[i].style.minHeight = maxHeight + "px";
+            }
+        }
+    </script>
+</head>
+
+@* Car image *@
+<div>
+    <img src="/images/Photo7.jpg" class="img-fluid img-photo7" alt="Photo7">  
+</div>
+
+@*  Car  *@
+<div class="container-xl mx-auto p-3 mt-5">
+    @if (Model != null)
+    {
+        @foreach (var item in Model)
+        {
+            <div class="item mb-5">
+                <div class="row">
+                    <div class="col">
+                        @if (item.Annonce.VoitureImages != null && item.Annonce.VoitureImages.Any())
+                        {
+                            <div>
+                                @foreach (var image in item.Annonce.VoitureImages)
+                                {
+                                    <a href="@Url.Content("~/Voitures/images/" + System.IO.Path.GetFileName(image.LienPhoto))" data-lightbox="voitures" class="img-thumbnail">
+                                        <img src="@Url.Content("~/Voitures/images/" + System.IO.Path.GetFileName(image.LienPhoto))" alt="Photo de la voiture" class="img-thumbnail">
+                                    </a>
+                                }
+                            </div>
+                        }
+                        else
+                        {
+                            <p>Aucune photo disponible</p>
+                        }
+                    </div>
+                    <div class="col">
+                        <h5>Année: @item.Voiture.Annee</h5>
+                        <h5>Modèle: de @item.Voiture.Modele</h5>
+                        <h5>Marque: @item.Voiture.Marque</h5>
+                        <h5>Finition: @item.Voiture.Finition </h5>
+                    </div>
+
+                    <div class="col m-auto">
+                        <h5 class="text-center">Prix:</h5>
+                        <h3 class="text-center">@item.Voiture.PrixDeVente €</h3>
+                    </div>
+                    <div class="col statue" style="background-color: @((item.StatutVoiture == "Disponible à la vente") ? "#008000" : "#FF0000")">
+                        <p class="statue-text m-4">@item.StatutVoiture</p>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
