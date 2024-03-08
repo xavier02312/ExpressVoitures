@@ -1,9 +1,11 @@
 ﻿using ExpressVoitures.Data;
 using ExpressVoitures.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ExpressVoitures.Controllers
 {
+    [Authorize]
     public class MargesController : Controller
     {
         private readonly ApplicationDbContext _context;

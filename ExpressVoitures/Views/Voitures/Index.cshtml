@@ -7,8 +7,8 @@
 <h1>Liste des Voitures</h1>
 
 <p>
-    <a asp-action="Create">Créer nouvelle Voiture</a> |
-    <a asp-controller="Marges">Modifier la marge par voiture (actuellement de @Model.FirstOrDefault()?.DerniereMargeParVoiture() €)</a>
+    <a class="btn btn-outline-info" asp-action="Create">Créer nouvelle Voiture</a> |
+    <a class="text-decoration-none text-danger" asp-controller="Marges">Modifier la marge par voiture (actuellement de @Model.FirstOrDefault()?.DerniereMargeParVoiture() €)</a>
 </p>
 
 <table class="table">

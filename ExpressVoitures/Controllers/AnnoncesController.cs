@@ -9,9 +9,11 @@ using Microsoft.EntityFrameworkCore;
 using ExpressVoitures.Data;
 using ExpressVoitures.Models;
 using ExpressVoitures.Models.Service;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ExpressVoitures.Controllers
 {
+    [Authorize]
     public class AnnoncesController : Controller
     {
         private readonly ApplicationDbContext _context;
