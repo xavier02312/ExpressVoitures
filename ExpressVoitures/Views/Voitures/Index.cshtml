@@ -4,14 +4,14 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Liste des Voitures</h1>
-
-<p>
+<p class="mt-4 text-center">
     <a class="btn btn-outline-info" asp-action="Create">Créer nouvelle Voiture</a> |
     <a class="text-decoration-none text-danger" asp-controller="Marges">Modifier la marge par voiture (actuellement de @Model.FirstOrDefault()?.DerniereMargeParVoiture() €)</a>
 </p>
 
-<table class="table">
+
+ <div class="table-responsive-sm">
+    <table class="table table-hover">
     <thead>
         <tr>
             <th>
@@ -96,10 +96,12 @@
                 <td>
                     <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@item.Voiture.Id">Modification</a> |
                     <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Voiture.Id">Suppression</a> |
-                    <a class="btn btn-outline-info" asp-controller="Reparations" asp-action="Index" asp-route-idVoiture="@item.Voiture.Id">réparation</a> |
+                    <a class="btn btn-outline-secondary" asp-controller="Reparations" asp-action="Index" asp-route-idVoiture="@item.Voiture.Id">réparation</a> |
                     <a class="btn btn-outline-info" asp-controller="Annonces" asp-action="Index" asp-route-idVoiture="@item.Voiture.Id">Annonce</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+</div>
+

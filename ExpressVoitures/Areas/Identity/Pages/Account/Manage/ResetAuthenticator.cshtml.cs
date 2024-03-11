@@ -39,7 +39,7 @@ namespace ExpressVoitures.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Impossible de charger l’utilisateur avec l’ID '{_userManager.GetUserId(User)}'.");
             }
 
             return Page();
@@ -50,16 +50,16 @@ namespace ExpressVoitures.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Impossible de charger l’utilisateur avec l’ID '{_userManager.GetUserId(User)}'.");
             }
 
             await _userManager.SetTwoFactorEnabledAsync(user, false);
             await _userManager.ResetAuthenticatorKeyAsync(user);
             var userId = await _userManager.GetUserIdAsync(user);
-            _logger.LogInformation("User with ID '{UserId}' has reset their authentication app key.", user.Id);
+            _logger.LogInformation("Utilisateur avec ID '{UserId}' a réinitialisé sa clé d’application d’authentification.", user.Id);
 
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your authenticator app key has been reset, you will need to configure your authenticator app using the new key.";
+            StatusMessage = "Votre clé d’application d’authentification a été réinitialisée, vous devrez configurer votre application d’authentification à l’aide de la nouvelle clé.";
 
             return RedirectToPage("./EnableAuthenticator");
         }

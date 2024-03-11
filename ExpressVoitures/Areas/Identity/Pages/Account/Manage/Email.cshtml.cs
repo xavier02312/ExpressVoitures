@@ -69,7 +69,7 @@ namespace ExpressVoitures.Areas.Identity.Pages.Account.Manage
             /// </summary>
             [Required]
             [EmailAddress]
-            [Display(Name = "New email")]
+            [Display(Name = "Nouvelle adresse e-mail")]
             public string NewEmail { get; set; }
         }
 
@@ -91,7 +91,7 @@ namespace ExpressVoitures.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Impossible de charger l’utilisateur avec l’ID'{_userManager.GetUserId(User)}'.");
             }
 
             await LoadAsync(user);
@@ -103,7 +103,7 @@ namespace ExpressVoitures.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Impossible de charger l’utilisateur avec l’ID'{_userManager.GetUserId(User)}'.");
             }
 
             if (!ModelState.IsValid)
@@ -125,14 +125,14 @@ namespace ExpressVoitures.Areas.Identity.Pages.Account.Manage
                     protocol: Request.Scheme);
                 await _emailSender.SendEmailAsync(
                     Input.NewEmail,
-                    "Confirm your email",
-                    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    "Confirmez votre adresse e-mail",
+                    $"Veuillez confirmer votre compte par <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>en cliquant ici</a>.");
 
-                StatusMessage = "Confirmation link to change email sent. Please check your email.";
+                StatusMessage = "Lien de confirmation pour modifier l’e-mail envoyé. Veuillez vérifier vos e-mails.";
                 return RedirectToPage();
             }
 
-            StatusMessage = "Your email is unchanged.";
+            StatusMessage = "Votre adresse e-mail n’a pas changé.";
             return RedirectToPage();
         }
 
@@ -141,7 +141,7 @@ namespace ExpressVoitures.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Impossible de charger l’utilisateur avec l’ID'{_userManager.GetUserId(User)}'.");
             }
 
             if (!ModelState.IsValid)
@@ -161,10 +161,10 @@ namespace ExpressVoitures.Areas.Identity.Pages.Account.Manage
                 protocol: Request.Scheme);
             await _emailSender.SendEmailAsync(
                 email,
-                "Confirm your email",
-                $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                "Confirmez votre adresse e-mail",
+                $"Veuillez confirmer votre compte par <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>en cliquant ici</a>.");
 
-            StatusMessage = "Verification email sent. Please check your email.";
+            StatusMessage = "E-mail de vérification envoyé. Veuillez vérifier vos e-mails.";
             return RedirectToPage();
         }
     }

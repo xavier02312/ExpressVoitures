@@ -77,7 +77,7 @@ namespace ExpressVoitures.Areas.Identity.Pages.Account
             /// </summary>
             [Required]
             [EmailAddress]
-            [Display(Name = "Email")]
+            [Display(Name = "E-mail")]
             public string Email { get; set; }
 
             /// <summary>
@@ -87,7 +87,7 @@ namespace ExpressVoitures.Areas.Identity.Pages.Account
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            [Display(Name = "Mot de passe")]
             public string Password { get; set; }
 
             /// <summary>
@@ -95,8 +95,8 @@ namespace ExpressVoitures.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Display(Name = "Confirmer le mot de passe")]
+            [Compare("Password", ErrorMessage = "Le mot de passe de confirmation ne correspondent pas.")]
             public string ConfirmPassword { get; set; }
         }
 
@@ -121,7 +121,7 @@ namespace ExpressVoitures.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User created a new account with password.");
+                    _logger.LogInformation("L’utilisateur a créé un nouveau compte avec un mot de passe.");
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -132,8 +132,8 @@ namespace ExpressVoitures.Areas.Identity.Pages.Account
                         values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    await _emailSender.SendEmailAsync(Input.Email, "Confirmez votre adresse e-mail",
+                        $"Veuillez confirmer votre compte par <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>en cliquant ici</a>.");
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
@@ -163,9 +163,9 @@ namespace ExpressVoitures.Areas.Identity.Pages.Account
             }
             catch
             {
-                throw new InvalidOperationException($"Can't create an instance of '{nameof(IdentityUser)}'. " +
-                    $"Ensure that '{nameof(IdentityUser)}' is not an abstract class and has a parameterless constructor, or alternatively " +
-                    $"override the register page in /Areas/Identity/Pages/Account/Register.cshtml");
+                throw new InvalidOperationException($"Impossible de créer une instance de'{nameof(IdentityUser)}'. " +
+                    $"S’assurer que '{nameof(IdentityUser)}' n’est pas une classe abstraite et possède un constructeur sans paramètre, ou bien " +
+                    $"Remplacer la page d’enregistrement dans /Areas/Identity/Pages/Account/Register.cshtml");
             }
         }
 
@@ -173,7 +173,7 @@ namespace ExpressVoitures.Areas.Identity.Pages.Account
         {
             if (!_userManager.SupportsUserEmail)
             {
-                throw new NotSupportedException("The default UI requires a user store with email support.");
+                throw new NotSupportedException("L’interface utilisateur par défaut nécessite un magasin utilisateur avec une assistance par e-mail.");
             }
             return (IUserEmailStore<IdentityUser>)_userStore;
         }

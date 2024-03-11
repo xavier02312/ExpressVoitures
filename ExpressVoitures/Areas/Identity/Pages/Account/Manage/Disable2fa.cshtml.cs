@@ -36,12 +36,12 @@ namespace ExpressVoitures.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Impossible de charger l’utilisateur avec l’ID '{_userManager.GetUserId(User)}'.");
             }
 
             if (!await _userManager.GetTwoFactorEnabledAsync(user))
             {
-                throw new InvalidOperationException($"Cannot disable 2FA for user as it's not currently enabled.");
+                throw new InvalidOperationException($"Impossible de désactiver l’authentification à 2 facteurs pour l’utilisateur, car elle n’est pas activée pour le moment.");
             }
 
             return Page();
@@ -52,17 +52,17 @@ namespace ExpressVoitures.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Impossible de charger l’utilisateur avec l’ID '{_userManager.GetUserId(User)}'.");
             }
 
             var disable2faResult = await _userManager.SetTwoFactorEnabledAsync(user, false);
             if (!disable2faResult.Succeeded)
             {
-                throw new InvalidOperationException($"Unexpected error occurred disabling 2FA.");
+                throw new InvalidOperationException($"Une erreur inattendue s’est produite lors de la désactivation 2FA.");
             }
 
-            _logger.LogInformation("User with ID '{UserId}' has disabled 2fa.", _userManager.GetUserId(User));
-            StatusMessage = "2fa has been disabled. You can reenable 2fa when you setup an authenticator app";
+            _logger.LogInformation("Utilisateur avec ID '{UserId}' a désactivé 2fa.", _userManager.GetUserId(User));
+            StatusMessage = "L’authentification à 2FA a été désactivée. Vous pouvez réactiver l’authentification à 2FA lorsque vous configurez une application d’authentification";
             return RedirectToPage("./TwoFactorAuthentication");
         }
     }
