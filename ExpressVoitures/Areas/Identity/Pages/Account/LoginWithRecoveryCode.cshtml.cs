@@ -54,7 +54,7 @@ namespace ExpressVoitures.Areas.Identity.Pages.Account
             [BindProperty]
             [Required]
             [DataType(DataType.Text)]
-            [Display(Name = "Recovery Code")]
+            [Display(Name = "Code de récupération")]
             public string RecoveryCode { get; set; }
         }
 
@@ -64,7 +64,7 @@ namespace ExpressVoitures.Areas.Identity.Pages.Account
             var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
             if (user == null)
             {
-                throw new InvalidOperationException($"Unable to load two-factor authentication user.");
+                throw new InvalidOperationException($"Impossible de charger l’utilisateur de l’authentification à deux facteurs.");
             }
 
             ReturnUrl = returnUrl;
@@ -82,7 +82,7 @@ namespace ExpressVoitures.Areas.Identity.Pages.Account
             var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
             if (user == null)
             {
-                throw new InvalidOperationException($"Unable to load two-factor authentication user.");
+                throw new InvalidOperationException($"Impossible de charger l’utilisateur de l’authentification à deux facteurs.");
             }
 
             var recoveryCode = Input.RecoveryCode.Replace(" ", string.Empty);
@@ -93,18 +93,18 @@ namespace ExpressVoitures.Areas.Identity.Pages.Account
 
             if (result.Succeeded)
             {
-                _logger.LogInformation("User with ID '{UserId}' logged in with a recovery code.", user.Id);
+                _logger.LogInformation("L’utilisateur avec l’ID '{UserId}' s’est connecté avec un code de récupération.", user.Id);
                 return LocalRedirect(returnUrl ?? Url.Content("~/"));
             }
             if (result.IsLockedOut)
             {
-                _logger.LogWarning("User account locked out.");
+                _logger.LogWarning("Le compte de l’utilisateur est verrouillé.");
                 return RedirectToPage("./Lockout");
             }
             else
             {
-                _logger.LogWarning("Invalid recovery code entered for user with ID '{UserId}' ", user.Id);
-                ModelState.AddModelError(string.Empty, "Invalid recovery code entered.");
+                _logger.LogWarning("Code de récupération non valide saisi pour l’utilisateur avec l’ID '{UserId}'", user.Id);
+                ModelState.AddModelError(string.Empty, "Code de récupération non valide saisi.");
                 return Page();
             }
         }
