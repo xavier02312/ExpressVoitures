@@ -66,6 +66,7 @@ namespace ExpressVoitures.Areas.Identity.Pages.Account
             /// </summary>
             [Required]
             [EmailAddress]
+            [Display(Name = "E-mail")]
             public string Email { get; set; }
 
             /// <summary>
@@ -74,13 +75,14 @@ namespace ExpressVoitures.Areas.Identity.Pages.Account
             /// </summary>
             [Required]
             [DataType(DataType.Password)]
+            [Display(Name = "Mot de passe")]
             public string Password { get; set; }
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Display(Name = "Souvenez-vous de moi?")]
+            [Display(Name = "Se souvenir de moi?")]
             public bool RememberMe { get; set; }
         }
 
@@ -116,10 +118,6 @@ namespace ExpressVoitures.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("L’utilisateur s’est connecté.");
                     return LocalRedirect(returnUrl);
-                }
-                if (result.RequiresTwoFactor)
-                {
-                    return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
                 }
                 if (result.IsLockedOut)
                 {
