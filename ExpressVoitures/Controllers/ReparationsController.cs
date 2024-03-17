@@ -41,7 +41,7 @@ namespace ExpressVoitures.Controllers
                 Reparations = reparations,
                 _context = _context
             };
-            
+
             return View(model);
         }
 
@@ -95,7 +95,6 @@ namespace ExpressVoitures.Controllers
             {
                 return RedirectToAction("Error");
             }
-
             return View(reparation);
         }
 
@@ -148,9 +147,9 @@ namespace ExpressVoitures.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index), new { idVoiture = reparation.IdVoiture });
+                
             }
-            return View(reparation);
+            return RedirectToAction(nameof(Index), new { idVoiture = reparation.IdVoiture });
         }
 
         // GET: Reparations/Delete/5
@@ -183,6 +182,7 @@ namespace ExpressVoitures.Controllers
             }
 
             await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index), new { idVoiture = reparation.IdVoiture });
         }
 
