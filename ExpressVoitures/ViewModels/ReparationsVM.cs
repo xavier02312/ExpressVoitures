@@ -15,7 +15,7 @@ namespace ExpressVoitures.ViewModels
         public float TotalReparation;
 
         public ReparationsVM(int IdVoiture, IEnumerable<ReparationavecVoiture>? Reparations, ApplicationDbContext context)
-        {
+        {     
             this.IdVoiture = IdVoiture;
             this.Reparations = Reparations;
             this._context = context;
@@ -23,7 +23,7 @@ namespace ExpressVoitures.ViewModels
             if (Reparations != null && Reparations.Any())
             {
                 var DateOnlyAchatVoiture = DateOnly.FromDateTime(Reparations.FirstOrDefault().Reparation.Voiture.DateAchat);
-                /*Erreur*/
+
                 IndexTitle = "Liste des réparations du véhicule de marque " + Reparations.FirstOrDefault().Reparation.Voiture.Marque +
                     " de modèle " + Reparations.FirstOrDefault().Reparation.Voiture.Modele
                     + " acheté le " + DateOnlyAchatVoiture;
@@ -39,11 +39,11 @@ namespace ExpressVoitures.ViewModels
             ReparationService reparationService = new ReparationService(_context);
             return TotalReparation = reparationService.SommeReparations(IdVoiture);
         }
-
     }
+
     public class ReparationavecVoiture
     {
-        public Reparation Reparation { get; set; }
+        public Reparation? Reparation { get; set; }
 
         public Voiture? Voiture { get; set; }
     }
