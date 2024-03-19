@@ -6,7 +6,7 @@
 
 <p class="mt-4 text-center">
     <a class="btn btn-outline-info" asp-action="Create">Créer nouvelle Voiture</a> |
-    <a class="text-decoration-none text-danger" asp-controller="Marges">Modifier la marge par voiture (actuellement de @Model.FirstOrDefault()?.DerniereMargeParVoiture() €)</a>
+    <a class="text-decoration-none text-danger" asp-controller="Marges">Modifier la marge par voiture (qui est minimum de @Model.FirstOrDefault()?.DerniereMargeParVoiture() €)</a>
 </p>
 
 
