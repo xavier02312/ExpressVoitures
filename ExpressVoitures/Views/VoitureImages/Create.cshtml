@@ -4,9 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>VoitureImage</h4>
+<h4 class="mt-4">Creation d'une Image pour une voiture</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -17,15 +15,15 @@
                 <input asp-for="LienPhoto" class="form-control" />
                 <span asp-validation-for="LienPhoto" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-outline-success" />
+            <div class="form-group mt-1">
+                <input type="submit" value="Valider" class="btn btn-outline-success" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a class="btn btn-outline-info" asp-action="Index">Back to List</a>
+    <a class="btn btn-outline-info mt-1" asp-action="Index">retour à la liste</a>
 </div>
 
 @section Scripts {

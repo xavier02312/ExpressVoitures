@@ -78,7 +78,7 @@ namespace ExpressVoitures.ViewModels
                     return StatutVoiture = "Vendue";
                 }
             }
-            return StatutVoiture = "en préparation, bientôt à la vente";
+            return StatutVoiture = "En préparation, bientôt à la vente";
         }
     }
 }

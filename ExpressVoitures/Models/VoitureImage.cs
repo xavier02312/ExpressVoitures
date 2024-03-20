@@ -10,7 +10,7 @@ namespace ExpressVoitures.Models
         public required int IdAnnonce { get; set; }
 
         public string? Nom { get; set; }
-
+        [Display(Name = "Lien de Photo")]
         public string? LienPhoto { get; set; }
 
         [NotMapped]

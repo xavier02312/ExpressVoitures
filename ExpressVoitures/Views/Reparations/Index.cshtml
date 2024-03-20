@@ -28,12 +28,12 @@
                     @Html.DisplayFor(modelItem => item.Reparation.TypeDeReparation)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Reparation.CoutsReparation)
+                    @Html.DisplayFor(modelItem => item.Reparation.CoutsReparation) €
                 </td>
                 <td>
-                        <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@item.Reparation.Id" asp-route-idVoiture=@Model.IdVoiture>Edit</a> |
+                        <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@item.Reparation.Id" asp-route-idVoiture=@Model.IdVoiture>Modifier</a> |
                         <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Reparation.Id" asp-route-idVoiture=@Model.IdVoiture>Details</a> |
-                        <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Reparation.Id" asp-route-idVoiture="@item.Reparation.IdVoiture">Delete</a>
+                        <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Reparation.Id" asp-route-idVoiture="@item.Reparation.IdVoiture">Supprimer</a>
                 </td>
             </tr>
         }
@@ -47,5 +47,5 @@
     </tbody>
 </table>
 <div>
-    <a class="btn btn-outline-info" asp-controller="Voitures" asp-action="Index" )>retour à la liste des voitures</a>
+    <a class="btn btn-outline-info" asp-controller="Voitures" asp-action="Index">retour à la liste des voitures</a>
 </div>

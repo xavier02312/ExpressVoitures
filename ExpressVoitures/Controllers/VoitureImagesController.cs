@@ -157,7 +157,7 @@ namespace ExpressVoitures.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id, int idVoiture)
         {
             var voitureImage = await _context.VoitureImages.FindAsync(id);
-            if (voitureImage != null)
+            if (voitureImage == null)
             {
                 return NotFound();
             }

@@ -7,7 +7,7 @@
 
 <h3>Est-vous sur de supprimer cette Annonce ?</h3>
 <div>
-    <h4>Annonce</h4>
+    <h4 class="text-danger">Annonce à supprimer</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -26,7 +26,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-outline-danger" /> |
-        <a class="btn btn-outline-info" asp-action="Index">Back to List</a>
+        <input type="submit" value="Supprimer" class="btn btn-outline-danger" /> |
+        <a class="btn btn-outline-info" asp-action="Index">Retour à l'annonce</a>
     </form>
 </div>

@@ -13,9 +13,8 @@
     </style>
 </head>
 
-<h1>Modification</h1>
+<h1 class="mt-4">Modification de l'Annonce</h1>
 
-<h4>Annonce</h4>
 <hr />
 
 <div class="row">
@@ -64,7 +63,7 @@
     <tbody>
         @if (Model.VoitureImages == null || !Model.VoitureImages.Any())
         {
-            <div>Aucune photo n'a été trouvée.</div>
+            <div class="text-danger">Aucune photo n'a été trouvée.</div>
         }
         else
         {
@@ -78,8 +77,8 @@
                         <img src="@Url.Content("~/Voitures/images/" + System.IO.Path.GetFileName(item.LienPhoto))" class="img-thumbnail" />
                     </td>
                     <td>
-                        <a class="btn btn-outline-warning" asp-action="Edit" asp-controller="VoitureImages" asp-route-id="@item.Id" asp-route-idAnnonce="@Model.Id" asp-route-idVoiture="@Model.IdVoiture">Edit</a> |
-                        <a class="btn btn-outline-danger" asp-action="Delete" asp-controller="VoitureImages" asp-route-id="@item.Id" asp-route-idAnnonce="@Model.Id" asp-route-idVoiture="@Model.IdVoiture">Delete</a>
+                        <a class="btn btn-outline-warning" asp-action="Edit" asp-controller="VoitureImages" asp-route-id="@item.Id" asp-route-idAnnonce="@Model.Id" asp-route-idVoiture="@Model.IdVoiture">Modifier</a> |
+                        <a class="btn btn-outline-danger" asp-action="Delete" asp-controller="VoitureImages" asp-route-id="@item.Id" asp-route-idAnnonce="@Model.Id" asp-route-idVoiture="@Model.IdVoiture">Supprimer</a>
                     </td>
                 </tr>
             }

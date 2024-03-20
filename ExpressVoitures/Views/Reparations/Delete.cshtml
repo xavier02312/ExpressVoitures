@@ -4,7 +4,7 @@
     ViewData["Title"] = "Delete";
 }
 
-<h3>Veux tu supprimer cette réparation?</h3>
+<h3 class="text-danger mt-4">Voulez-vous supprimer cette réparation?</h3>
 <div>
     <h4>Reparation</h4>
     <hr />
@@ -19,13 +19,13 @@
             @Html.DisplayNameFor(model => model.CoutsReparation)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CoutsReparation)
+            @Html.DisplayFor(model => model.CoutsReparation) €
         </dd>
     </dl>
     
     <form asp-action="Delete" asp-route-idVoiture=@Model.IdVoiture>
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-outline-danger" /> |
-        <a class="btn btn-outline-info" asp-action="Index" asp-route-idVoiture=@Model.IdVoiture>Back to List</a>
+        <input type="submit" value="Supprimer" class="btn btn-outline-danger" /> |
+        <a class="btn btn-outline-info" asp-action="Index" asp-route-idVoiture=@Model.IdVoiture>Retour à la liste</a>
     </form>
 </div>

@@ -4,9 +4,7 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
-
-<h4>Reparation</h4>
+<h4 class="mt-4">Modifier les Reparations</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -27,14 +25,14 @@
                 <span asp-validation-for="CoutsReparation" class="text-danger"></span>
             </div>
             <div class="form-group mt-1" asp-route-idVoiture=@Model.IdVoiture>
-                <input type="submit" value="Save" class="btn btn-outline-success" />
+                <input type="submit" value="Valider" class="btn btn-outline-success" />
             </div>
         </form>
     </div>
 </div>
 
 <div class="mt-1">
-    <a class="btn btn-outline-info" asp-action="Index" asp-route-idVoiture=@Model.IdVoiture>Back to List</a>
+    <a class="btn btn-outline-info" asp-action="Index" asp-route-idVoiture=@Model.IdVoiture>Retour à la liste</a>
 </div>
 
 @section Scripts {

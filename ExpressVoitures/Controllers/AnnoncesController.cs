@@ -80,7 +80,7 @@ namespace ExpressVoitures.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,IdVoiture,TitreAnnonce,DescriptionAnnonce, VoitureImages")] Annonce annonce, List<IFormFile> VoitureImages, int IdVoiture)
         {
-           /* if (ModelState.IsValid)
+            /*if (ModelState.IsValid)
             {
                 if (VoitureImages != null && VoitureImages.Count > 0)
                 {
