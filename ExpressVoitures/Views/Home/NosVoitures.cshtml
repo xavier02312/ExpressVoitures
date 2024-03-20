@@ -31,7 +31,7 @@
         }
         /* fond Vendu  */
         .statue-text {
-            transform: rotate(25deg);
+            transform: rotate(22deg);
         }
         body {
             background-color: #f2f2f2;
@@ -51,12 +51,12 @@
     </script>
 </head>
 
-@* Car image *@
+@* Image de fond  *@
 <div>
     <img src="/images/Photo7.jpg" class="img-fluid img-photo7" alt="Photo7">  
 </div>
 
-@*  Car  *@
+@*  Nos Voitures  *@
 <div class="container-xl mx-auto p-3 mt-5">
     @if (Model != null)
     {
@@ -78,7 +78,7 @@
                         }
                         else
                         {
-                            <p>Aucune photo disponible</p>
+                            <p class="text-danger">Aucune photo disponible</p>
                         }
                     </div>
                     <div class="col">
@@ -100,7 +100,7 @@
         }
     }
 </div>
-@* Page up *@
+@* Logo pour monter la page *@
 <div class="text-end me-5">
     <a href="#top" class="btn btn-outline-dark sticky-top">
         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">

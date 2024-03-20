@@ -10,13 +10,13 @@ namespace ExpressVoitures.Models
         public required int IdVoiture { get; set; }
 
         [Required]
-        [Display(Name = "Titre Annonce")]
+        [Display(Name = "Titre de l' Annonce")]
         public string? TitreAnnonce { get; set; }
 
-        [Display(Name = "Description Annonce")]
+        [Display(Name = "Description de l' Annonce")]
         public string? DescriptionAnnonce { get; set; }
 
-        [Display(Name = "photos")]
+        [Display(Name = "Photos")]
         public ICollection<VoitureImage>? VoitureImages { get; set; }
 
         [NotMapped]

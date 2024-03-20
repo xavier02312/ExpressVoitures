@@ -5,7 +5,7 @@
 }
 
 
-<h4 class="mt-1 text-center">Créér une Voiture</h4>
+<h4 class="mt-2 text-center">Créer une Voiture</h4>
 <hr />
 <div class="row">
     <div class="col-md-4 mx-auto">
@@ -61,16 +61,18 @@
                 <input asp-for="DateDeVente" class="form-control" />
                 <span asp-validation-for="DateDeVente" class="text-danger"></span>
             </div>
-            <div class="form-group mt-2">
-                <input type="submit" value="Create" class="btn btn-outline-success" />
+            <div class="form-group mt-2 text-center">
+                <input type="submit" value="Valider" class="btn btn-outline-success" />
             </div>
         </form>
+        <div class="mt-1 text-center">
+            <a class="btn btn-outline-info" asp-action="Index">Retour à la liste</a>
+        </div>
     </div>
+    
 </div>
 
-<div class="mt-1 text-center">
-    <a class="btn btn-outline-info" asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

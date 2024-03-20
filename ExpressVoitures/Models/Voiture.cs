@@ -22,15 +22,17 @@ namespace ExpressVoitures.Models
                 return new ValidationResult("La date d'achat doit être postérieure à 1990 et inférieur ou égale à l'année en cours");
             }
         }
-        [Required(ErrorMessage = "l'année de la  voiture doit être complétée")]
+        [Required(ErrorMessage = "L'année de la voiture doit être complétée")]
         [RegularExpression("^\\d+$", ErrorMessage = "L'année doit être un entier")]
         [AnneeValidation]
+        [Display(Name = "Année")]
         public int Annee { get; set; }
 
         [Required(ErrorMessage = "La marque doit être complétée")]
         public string? Marque { get; set; }
 
         [Required(ErrorMessage = "Le modèle doit être complétée")]
+        [Display(Name = "Modèle")]
         public string? Modele { get; set; }
 
         public string? Finition { get; set; }
@@ -51,8 +53,8 @@ namespace ExpressVoitures.Models
                 return new ValidationResult("La date d'achat doit être postérieure à l'Année");
             }
         }
-        [Display(Name = "Date Achat")]
-        [Required(ErrorMessage = "la date d'achat de la voiture doit être complétée")]
+        [Display(Name = "Date d' Achat")]
+        [Required(ErrorMessage = "La date d'achat de la voiture doit être complétée")]
         [DataType(DataType.Date, ErrorMessage = "La date d'achat doit être une date.")]
         [DateAchatValidation]
         public DateTime DateAchat { get; set; }
@@ -72,8 +74,8 @@ namespace ExpressVoitures.Models
             }
         }
        
-        [Display(Name = "Prix Achat")]
-        [Required(ErrorMessage = "le prix d'achat de la voiture doit être complétée")]
+        [Display(Name = "Prix d' Achat")]
+        [Required(ErrorMessage = "Le prix d'achat de la voiture doit être complétée")]
         [RegularExpression(@"^[0-9]+(\,[0-9]{1,2})?$", ErrorMessage = "Le prix d'achat doit être un nombre")]
         [PrixAchatValidation]
         public float PrixAchat { get; set; }
@@ -119,7 +121,7 @@ namespace ExpressVoitures.Models
 
                 if (PrixDeVente == null)
                 {
-                    return new ValidationResult("Le prix de vente doit être complété avec le prix d'achat + marge");
+                    return new ValidationResult("Le prix de vente doit être complété avec le prix d'achat + marge qui est de 500 € minimum");
                 }
                 else if (PrixDeVente >= voiture.PrixAchat + _marge)
                 {
@@ -127,7 +129,7 @@ namespace ExpressVoitures.Models
                 }
                 else
                 {
-                    return new ValidationResult("Il n'est pas possible de vendre une voiture en dessous du prix d'achat + la marge");
+                    return new ValidationResult("Il n'est pas possible de vendre une voiture en dessous du prix d'achat + la marge qui est de 500 € minimum");
                 }
             }
         }
@@ -153,7 +155,7 @@ namespace ExpressVoitures.Models
 
                 if (dateDeVente != null && dateDisponibiliteDeVente == null)
                 {
-                    return new ValidationResult("Veuillez remplir Date disponibilité de Vente");
+                    return new ValidationResult("Veuillez remplir la Date disponibilité de Vente");
                 }
                 else if (dateDeVente == null || (dateDeVente >= dateDisponibiliteDeVente && dateDeVente <= DateTime.Now))
                 {
