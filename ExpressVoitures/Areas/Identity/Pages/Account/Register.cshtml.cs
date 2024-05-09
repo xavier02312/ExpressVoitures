@@ -22,6 +22,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ExpressVoitures.Areas.Identity.Pages.Account
 {
+    /* Commenter pour la première connexion */
     [Authorize(Roles = "Admin")]
     public class RegisterModel : PageModel
     {
@@ -128,19 +129,21 @@ namespace ExpressVoitures.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
-                    /*Pour connecter un compte en Role Admin / Customer */
+                    /* Pour connecter un compte en Rôle Admin tous décommenter puis laisser commenter pour les utilisateurs*/
 
+                    /* A commenter pour Rôle Customer */
                     /*if (!await _roleManager.RoleExistsAsync(SD.AdminEndUser))
                     {
                         await _roleManager.CreateAsync(new IdentityRole(SD.AdminEndUser));
                     }
-
+                    *//* Ne pas commenter pour Rôle Customer *//*
                     if (!await _roleManager.RoleExistsAsync(SD.CustomerEndUser))
                     {
                         await _roleManager.CreateAsync(new IdentityRole(SD.CustomerEndUser));
                     }
 
-                    await _userManager.AddToRoleAsync(user, SD.AdminEndUser);*/
+                    *//* A commenter pour Rôle Customer *//*
+                   await _userManager.AddToRoleAsync(user, SD.AdminEndUser);*/
 
                     _logger.LogInformation("L’utilisateur a créé un nouveau compte avec un mot de passe.");
 
