@@ -13,7 +13,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-        /*Les R�les sont D�finit*/
+        /* Les Rôles sont Définit */
         .AddRoles<IdentityRole>()
         .AddEntityFrameworkStores<ApplicationDbContext>();
 
